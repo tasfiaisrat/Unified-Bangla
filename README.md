@@ -88,10 +88,29 @@ Two environments were used, since the models were trained in different places.
 
 Conda environment, Python 3.10, on Windows with CUDA.
 
-```bash
-conda create -n banglabert python=3.10 -y
-conda activate banglabert
+**Open Anaconda Prompt**, not the regular Command Prompt or PowerShell —
+search "Anaconda Prompt" in the Start menu. `conda activate` only works in a
+shell where conda has been initialised.
 
+**1. Create the environment**
+
+```bash
+conda create -n unifiedbangla python=3.10 -y
+```
+
+**2. Activate it**
+
+```bash
+conda activate unifiedbangla
+```
+
+Your prompt should now start with `(unifiedbangla)` instead of `(base)`.
+That prefix is how you know the environment is active — every command
+after this point installs into or runs from `unifiedbangla`.
+
+**3. Install the packages**
+
+```bash
 # PyTorch — pick the command matching your CUDA version from pytorch.org
 pip install torch --index-url https://download.pytorch.org/whl/cu121
 
@@ -101,18 +120,41 @@ pip install protobuf==3.20.3
 pip install jupyter
 ```
 
-Then launch Jupyter from inside the environment:
+**4. Launch Jupyter from inside the environment**
 
 ```bash
 jupyter notebook
 ```
 
-If the notebooks use NLTK metrics, download the required corpora once:
+Launching Jupyter this way means the notebooks run against `unifiedbangla`.
+If you open Jupyter some other way, the notebooks may run against a
+different environment and the imports will fail.
+
+**5. Download the NLTK corpora once**
+
+Run this in a notebook cell the first time:
 
 ```python
 import nltk
 nltk.download("punkt")
 nltk.download("wordnet")
+```
+
+---
+
+**Returning later:** you only create the environment once. Every new session
+is just two commands in Anaconda Prompt:
+
+```bash
+conda activate unifiedbangla
+jupyter notebook
+```
+
+**Useful checks**
+
+```bash
+conda env list          # all environments; the active one is marked with *
+conda list              # packages in the active environment
 ```
 
 **Version note:** the saved checkpoints were written with transformers
