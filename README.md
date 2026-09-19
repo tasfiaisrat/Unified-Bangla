@@ -57,21 +57,42 @@ The CSVs are included in this repository.
 
 Two environments were used, since the models were trained in different places.
 
+
 ### Local — dialect identification and full pipeline
 
-Conda environment, Python 3.10:
+Conda environment, Python 3.10, on Windows with CUDA.
 
+```bash
+conda create -n banglabert python=3.10 -y
+conda activate banglabert
+
+# PyTorch — pick the command matching your CUDA version from pytorch.org
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+pip install transformers==4.37.2 tokenizers==0.15.2 accelerate==0.30.0
+pip install datasets evaluate sacrebleu nltk rouge-score sentencepiece
+pip install protobuf==3.20.3
+pip install jupyter
 ```
-transformers 4.37.2
-accelerate 0.30
-tokenizers 0.15.2
-datasets
-evaluate
-sacrebleu
-nltk
-rouge-score
-protobuf 3.20.3
+
+Then launch Jupyter from inside the environment:
+
+```bash
+jupyter notebook
 ```
+
+If the notebooks use NLTK metrics, download the required corpora once:
+
+```python
+import nltk
+nltk.download("punkt")
+nltk.download("wordnet")
+```
+
+**Version note:** the saved checkpoints were written with transformers
+**4.57.3**, while the environment above pins **4.37.2**. Loading the
+checkpoints under the older version raises config errors — upgrade
+transformers to match the checkpoints, or re-save them under 4.37.2.
 
 
 ### Kaggle — translation
@@ -91,3 +112,15 @@ sacrebleu 2.4.0
 Trained checkpoints are too large for GitHub and are hosted separately.
 [Add the link here once uploaded.]
 
+## Citation
+
+```
+@inproceedings{israt2026unified,
+  title={Unified Bangla: A Transformer-Based Framework for Bangla Dialect Identification and Cross-Dialectal Translation},
+  author={Israt, Tasfia and Anannya, Mehrin and Mahfuz, Sadia and Shourov, Riad Mashrub and Hosen, Md Biplob and Mazumder, Rashed},
+  booktitle={2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence \& Networking (QPAIN)},
+  pages={1--6},
+  year={2026},
+  organization={IEEE}
+}
+```
