@@ -70,14 +70,14 @@ into train / validation / test. Sentence content was not altered.
 
 The files in this folder are a modified version of Vashantor and are therefore
 also distributed under CC BY 4.0. Please cite the original authors:
-...
+```
 @article{faria2023vashantor,
   title={Vashantor: a large-scale multilingual benchmark dataset for automated translation of bangla regional dialects to bangla language},
   author={Faria, Fatema Tuj Johora and Moin, Mukaffi Bin and Wase, Ahmed Al and Ahmmed, Mehidi and Sani, Md Rabius and Muhammad, Tashreef},
   journal={arXiv preprint arXiv:2311.11142},
   year={2023}
 }
-...
+```
 
 ## Environment
 
