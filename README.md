@@ -53,6 +53,32 @@ translation directions available from a single corpus.
 
 The CSVs are included in this repository.
 
+## Source and license
+
+The underlying sentences come from the **Vashantor** dataset by Faria et al.
+
+- Paper: https://arxiv.org/abs/2311.11142
+- Data: https://data.mendeley.com/datasets/bj5jgk878b/2
+- Repository: https://github.com/Mukaffi28/Vashantor-A-Large-scale-Multilingual-Benchmark-Dataset
+
+Vashantor is licensed under **CC BY 4.0**
+(https://creativecommons.org/licenses/by/4.0/).
+
+**Changes made:** the per-dialect files were merged into a single parallel
+corpus, with one row per sentence and one column per variety, then re-split
+into train / validation / test. Sentence content was not altered.
+
+The files in this folder are a modified version of Vashantor and are therefore
+also distributed under CC BY 4.0. Please cite the original authors:
+...
+@article{faria2023vashantor,
+  title={Vashantor: a large-scale multilingual benchmark dataset for automated translation of bangla regional dialects to bangla language},
+  author={Faria, Fatema Tuj Johora and Moin, Mukaffi Bin and Wase, Ahmed Al and Ahmmed, Mehidi and Sani, Md Rabius and Muhammad, Tashreef},
+  journal={arXiv preprint arXiv:2311.11142},
+  year={2023}
+}
+...
+
 ## Environment
 
 Two environments were used, since the models were trained in different places.
@@ -107,10 +133,6 @@ jiwer 3.0.1
 sacrebleu 2.4.0
 ```
 
-## Model weights
-
-Trained checkpoints are too large for GitHub and are hosted separately.
-[Add the link here once uploaded.]
 
 ## Citation
 
